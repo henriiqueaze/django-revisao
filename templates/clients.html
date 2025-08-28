@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Clients{% endblock %}
+
+{% block header %}
+  Clientes
+{% endblock %}
+
+{% block content %}
+  <a href="{% url 'get_clients' %}">Atualizar</a>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Data de Nasc.</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for client in clients %}
+        <tr>
+          <td>{{ client.id }}</td>
+          <td>{{ client.name }}</td>
+          <td>{{ client.email }}</td>
+          <td>{{ client.birth_date }}</td>
+          <td>
+            <a href="{% url 'delete_client' client.pk %}">Soft-delete</a>
+            <a href="{% url 'hard_delete_client' client.pk %}">Hard-delete</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">Nenhum cliente encontrado.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <hr>
+{% endblock %}
