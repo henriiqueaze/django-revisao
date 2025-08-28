@@ -1,0 +1,11 @@
+#change to your credentials
+SECRET_KEY=changeme
+DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1
+TIME_ZONE=America/Fortaleza
+
+#database
+DB_USER=changeme
+DB_PASSWORD=changeme
+DB_HOST=localhost
+DB_PORT=5432
