@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Confirmar remoção{% endblock %}
+{% block page_title %}Confirmar remoção{% endblock %}
+
+{% block content %}
+  <div class="card bg-dark border-danger">
+    <div class="card-body">
+      <h5 class="card-title">Apagar Order #{{ order.id }}</h5>
+      <p class="card-text">Tem certeza que deseja mover esta order para a lixeira? (Soft-delete)</p>
+
+      <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Sim, apagar</button>
+        <a class="btn btn-outline-light" href="{% url 'order_list' %}">Cancelar</a>
+      </form>
+    </div>
+  </div>
+{% endblock %}
