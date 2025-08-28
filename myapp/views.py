@@ -3,6 +3,7 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.db.models import Q
 from django.contrib import messages
+from .forms import OrderForm, ClientForm
 
 from .models import Client, Order
 from .forms import OrderForm
@@ -124,3 +125,24 @@ def hard_delete_order(request, pk):
     order.hard_delete()
     messages.success(request, "Order removida permanentemente.")
     return redirect('order_trash')
+
+
+class ClientCreateView(CreateView):
+    model = Client
+    form_class = ClientForm
+    template_name = 'clients/client_form.html'
+    success_url = reverse_lazy('get_clients')
+
+    def form_valid(self, form):
+        messages.success(self.request, "Cliente criado com sucesso.")
+        return super().form_valid(form)
+
+
+class ClientUpdateView(UpdateView):
+    model = Client
+    form_class = ClientForm
+    template_name = 'clients/client_form.html'
+
+    def get_success_url(self):
+        messages.success(self.request, "Cliente atualizado com sucesso.")
+        return reverse('get_clients')

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {% if form.instance.pk %}Editar Cliente{% else %}Novo Cliente{% endif %}
+{% endblock %}
+
+{% block page_title %}
+  {% if form.instance.pk %}Editar Cliente{% else %}Novo Cliente{% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="card bg-dark border-secondary">
+    <div class="card-body">
+      <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <div class="mb-3">
+          {{ form.name.label_tag }}
+          {{ form.name }}
+          {{ form.name.errors }}
+        </div>
+
+        <div class="mb-3">
+          {{ form.email.label_tag }}
+          {{ form.email }}
+          {{ form.email.errors }}
+        </div>
+
+        <div class="mb-3">
+          {{ form.birth_date.label_tag }}
+          {{ form.birth_date }}
+          {{ form.birth_date.errors }}
+        </div>
+
+        <div class="form-actions d-flex justify-content-end gap-2">
+          <a class="btn btn-outline-light" href="{% url 'get_clients' %}">Cancelar</a>
+          {% if form.instance.pk %}
+            <button class="btn btn-primary" type="submit">Salvar alterações</button>
+          {% else %}
+            <button class="btn btn-primary" type="submit">Criar Cliente</button>
+          {% endif %}
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

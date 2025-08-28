@@ -166,6 +166,46 @@ select:focus {
   border-color: rgba(37,99,235,0.25);
 }
 
+.form-control, .form-select {
+  background-color: #222 !important;
+  color: #fff !important;
+  border: 1px solid #444 !important;
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: #222 !important;
+  color: #fff !important;
+  border-color: #0d6efd !important; 
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+form label {
+  color: #fff !important;
+}
+
+::placeholder {
+  color: #bbb !important;
+  opacity: 1;
+}
+
+.table-dark th, .table-dark td {
+  vertical-align: middle;
+  border-color: #444;
+}
+
+.table .btn {
+  margin-right: 5px;
+}
+
+.table thead th {
+  text-align: center;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+
 
 @media (max-width:575px){
   .container { padding-left: .6rem; padding-right: .6rem; }

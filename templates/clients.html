@@ -6,14 +6,14 @@
   <div class="d-flex justify-content-between align-items-center mb-3">
     <div>
       <a class="btn btn-secondary btn-sm" href="{% url 'get_clients' %}">Atualizar</a>
-      <a class="btn btn-outline-light btn-sm" href="{% url 'order_create' %}">Nova Order</a>
+      <a class="btn btn-sm btn-success" href="{% url 'client_create' %}">Novo Cliente</a>
+      <a class="btn btn-outline-light btn-sm" href="{% url 'order_create' %}">Novo Pedido</a>
     </div>
-    <div class="text-end text-muted small">Total: {{ clients|length }}</div>
   </div>
 
   <div class="table-responsive">
     <table class="table table-dark table-hover align-middle">
-      <thead class="table-secondary text-dark">
+      <thead class="text-muted">
         <tr>
           <th>#</th>
           <th>Nome</th>
@@ -30,6 +30,7 @@
             <td>{{ client.email }}</td>
             <td>{{ client.birth_date }}</td>
             <td>
+              <a class="btn btn-sm btn-primary" href="{% url 'client_update' client.pk %}">Editar</a>
               <a class="btn btn-sm btn-outline-warning" href="{% url 'delete_client' client.pk %}" data-confirm="Tem certeza que deseja remover este cliente?">Soft-delete</a>
               <a class="btn btn-sm btn-outline-danger" href="{% url 'hard_delete_client' client.pk %}" data-confirm="Remoção permanente. Confirma?">Hard-delete</a>
             </td>

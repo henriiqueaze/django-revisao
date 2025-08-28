@@ -2,11 +2,13 @@ from django.urls import path
 from .views import (
     get_clients, delete_client, restore_client, hard_delete_client,
     OrderListView, OrderDetailView, OrderCreateView, OrderUpdateView, OrderDeleteView,
-    order_trash, restore_order, hard_delete_order
+    order_trash, restore_order, hard_delete_order, ClientCreateView, ClientUpdateView
 )
 
 urlpatterns = [
     path('clients/', get_clients, name='get_clients'),
+    path('clients/create/', ClientCreateView.as_view(), name='client_create'),
+    path('clients/<int:pk>/edit/', ClientUpdateView.as_view(), name='client_update'),
     path('clients/<int:pk>/delete/', delete_client, name='delete_client'),
     path('clients/<int:pk>/restore/', restore_client, name='restore_client'),
     path('clients/<int:pk>/hard-delete/', hard_delete_client, name='hard_delete_client'),
