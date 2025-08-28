@@ -1,14 +1,13 @@
 :root{
-  --bg:#0f1720;        /* very dark */
+  --bg:#0f1720;       
   --card:#111827;
   --muted:#9ca3af;
-  --accent:#2563eb;    /* azul */
+  --accent:#2563eb;   
   --accent-2:#06b6d4;
   --surface:#0b1220;
   --text:#e6eef8;
 }
 
-/* Base */
 body.theme-dark {
   background: linear-gradient(180deg,var(--bg), #071024 200px);
   color: var(--text);
@@ -16,12 +15,10 @@ body.theme-dark {
   min-height: 100vh;
 }
 
-/* Navbar brand */
 .navbar-brand {
   font-weight: 600;
 }
 
-/* Cards / Tables */
 .card {
   background: var(--card);
   color: var(--text);
@@ -36,29 +33,140 @@ body.theme-dark {
   background: rgba(255,255,255,0.03);
 }
 
-/* Buttons adjustments */
 .btn-outline-light {
   border-color: rgba(255,255,255,0.08);
 }
 .btn-sm { font-size: .82rem; }
 
-/* Forms */
 .form-control, .form-select {
   background: rgba(255,255,255,0.02);
   border: 1px solid rgba(255,255,255,0.06);
   color: var(--text);
 }
 
-/* Messages */
 .alert-info { background: rgba(37,99,235,0.08); color: var(--text); border: 1px solid rgba(37,99,235,0.12); }
 .alert-success { background: rgba(16,185,129,0.06); color: var(--text); border: 1px solid rgba(16,185,129,0.12); }
 .alert-warning { background: rgba(250,204,21,0.06); color: var(--text); border: 1px solid rgba(250,204,21,0.12); }
 .alert-danger { background: rgba(239,68,68,0.06); color: var(--text); border: 1px solid rgba(239,68,68,0.12); }
 
-/* small helpers */
 .text-muted { color: var(--muted) !important; }
 
-/* Responsividade: reduzir padding em telas pequenas */
+.card .card-body form {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.card .card-body label {
+  display: block;
+  margin-bottom: .28rem;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: .95rem;
+}
+
+.card .card-body input[type="text"],
+.card .card-body input[type="number"],
+.card .card-body input[type="email"],
+.card .card-body select,
+.card .card-body textarea {
+  width: 100%;
+  padding: .46rem .7rem;
+  border-radius: .375rem;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  color: var(--text);
+  box-sizing: border-box;
+}
+
+.card .card-body .errorlist {
+  margin: .25rem 0 .6rem;
+  color: #ff6b6b;
+  font-size: nine rem;
+  list-style: none;
+  padding-left: 0;
+}
+
+.form-actions {
+  display: flex;
+  gap: .5rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.form-actions .btn-primary {
+  min-width: 120px;
+}
+
+@media (max-width: 575px) {
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .form-actions .btn {
+    width: 100%;
+  }
+}
+
+.row-inline-fields {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .75rem;
+}
+@media (min-width: 768px) {
+  .row-inline-fields {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+.card .card-body input:focus,
+.card .card-body select:focus,
+.card .card-body textarea:focus {
+  outline: 3px solid rgba(37,99,235,0.08);
+  border-color: rgba(37,99,235,0.2);
+}
+
+body.theme-dark {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+main.container {
+  flex: 1 0 auto; 
+}
+
+footer {
+  flex-shrink: 0;
+  width: 100%;
+  position: relative; 
+  bottom: 0;
+}
+
+footer.py-3 {
+  background: #0b1220;
+  color: var(--muted);
+}
+
+.form-select,
+select {
+  color: #000 !important;
+  background-color: #fff !important;
+}
+
+.form-select option,
+select option {
+  color: #000 !important;
+  background-color: #fff !important;
+}
+
+.form-select:focus,
+select:focus {
+  outline: 3px solid rgba(37,99,235,0.12);
+  border-color: rgba(37,99,235,0.25);
+}
+
+
 @media (max-width:575px){
   .container { padding-left: .6rem; padding-right: .6rem; }
   .navbar-brand span { display:none; }

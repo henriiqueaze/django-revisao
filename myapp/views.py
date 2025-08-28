@@ -7,7 +7,6 @@ from django.contrib import messages
 from .models import Client, Order
 from .forms import OrderForm
 
-# ---------- Clients ----------
 def get_clients(request):
     clients = Client.objects.all().select_related()
     return render(request, 'clients.html', {'clients': clients})
@@ -31,7 +30,6 @@ def hard_delete_client(request, pk):
     return redirect('get_clients')
 
 
-# ---------- Orders CRUD ----------
 class OrderListView(ListView):
     model = Order
     template_name = 'orders/order_list.html'
@@ -111,7 +109,6 @@ class OrderDeleteView(DeleteView):
         return redirect(self.get_success_url())
 
 
-# Trash and restore views
 def order_trash(request):
     deleted = Order.all_objects.filter(is_deleted=True).select_related('client').order_by('-updated_at')
     return render(request, 'orders/order_trash.html', {'deleted': deleted})

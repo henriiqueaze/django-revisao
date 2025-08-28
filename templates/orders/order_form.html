@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% block title %}{% if form.instance.pk %}Editar Order{% else %}Nova Order{% endif %}{% endblock %}
-{% block page_title %}{% if form.instance.pk %}Editar Order{% else %}Nova Order{% endif %}{% endblock %}
+{% block title %}{% if form.instance.pk %}Editar Pedido{% else %}Novo Pedido{% endif %}{% endblock %}
+{% block page_title %}{% if form.instance.pk %}Editar Pedido{% else %}Novo Pedido{% endif %}{% endblock %}
 
 {% block content %}
   <div class="card bg-dark border-secondary">
@@ -8,25 +8,36 @@
       <form method="post" novalidate>
         {% csrf_token %}
         {{ form.non_field_errors }}
+
         <div class="mb-3">
-          {{ form.client.label_tag }} {{ form.client }}
+          {{ form.client.label_tag }}
+          {{ form.client }}
           {{ form.client.errors }}
         </div>
-        <div class="mb-3">
-          {{ form.total.label_tag }} {{ form.total }}
-          {{ form.total.errors }}
+
+        <div class="row-inline-fields mb-3">
+          <div>
+            {{ form.total.label_tag }}
+            {{ form.total }}
+            {{ form.total.errors }}
+          </div>
+          <div>
+            {{ form.status.label_tag }}
+            {{ form.status }}
+            {{ form.status.errors }}
+          </div>
         </div>
+
         <div class="mb-3">
-          {{ form.status.label_tag }} {{ form.status }}
-          {{ form.status.errors }}
-        </div>
-        <div class="mb-3">
-          {{ form.notes.label_tag }} {{ form.notes }}
+          {{ form.notes.label_tag }}
+          {{ form.notes }}
           {{ form.notes.errors }}
         </div>
 
-        <button class="btn btn-primary" type="submit">Salvar</button>
-        <a class="btn btn-outline-light" href="{% url 'order_list' %}">Cancelar</a>
+        <div class="form-actions">
+          <a class="btn btn-outline-light" href="{% url 'order_list' %}">Cancelar</a>
+          <button class="btn btn-primary" type="submit">Salvar</button>
+        </div>
       </form>
     </div>
   </div>
